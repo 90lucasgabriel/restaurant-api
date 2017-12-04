@@ -11,27 +11,17 @@ class Order extends Model implements Transformable
     use TransformableTrait;
 
     protected $fillable = [
-        'client_id',
-        'coupon_id',
-        'user_deliveryman_id', 
+        'diningtable_id',
         'total', 
         'status',
     ];
 
-    public function client(){
-        return $this->belongsTo(Client::class);
-    }
-
-    public function coupon(){
-        return $this->belongsTo(Coupon::class);
-    }
-
-    public function items(){
-        return $this->hasMany(OrderItem::class);
-    }
-
-
-    public function services(){
-        return $this->hasMany(Service::class);
+    /**
+     * Diningtable Relationship 1-1
+     *
+     * @return void
+     */
+    public function diningtable(){
+        return $this->belongsTo(Diningtable::class);
     }
 }

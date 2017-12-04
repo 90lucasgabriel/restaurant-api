@@ -1,15 +1,37 @@
 <?php
+
 namespace App\Transformers;
 
 use League\Fractal\TransformerAbstract;
 use App\Models\Branch;
-use Illuminate\Database\Eloquent\Collection;
 
+/**
+ * Class BranchTransformer
+ * 
+ * @package namespace App\Transformers;
+ */
 class BranchTransformer extends TransformerAbstract
 {
-    protected $defaultIncludes   = ['company'];
-    protected $availableIncludes = ['images'];
+    /**
+     * Default models includes
+     *
+     * @var array
+     */
+    protected $defaultIncludes  = ['company'];
 
+    /**
+     * Available models includes
+     *
+     * @var array
+     */
+    protected $availableIncludes = [];
+
+    /**
+     * Transform the \Branch entity
+     * @param \Branch $model
+     *
+     * @return array
+     */
     public function transform(Branch $model)
     {
         return [
@@ -26,25 +48,23 @@ class BranchTransformer extends TransformerAbstract
             'instagram'    => $model->instagram,
             
             'address'      => $model->address,
+            'number'       => $model->number,
             'complement'   => $model->complement,
             'zipcode'      => $model->zipcode,
             'neighborhood' => $model->neighborhood,
             'city'         => $model->city,
             'state'        => $model->state,
             'country'      => $model->country
-            //'created_at'    => $model->created_at,
-            //'updated_at'    => $model->updated_at
         ];
     }
 
-
+    /**
+     * Include category's information
+     *
+     * @param Category $model
+     * @return ['data'=>[App\Models\Category]]
+     */
     public function includeCompany(Branch $model){
-         return $this->item($model->company, new CompanyTransformer());
+        return $this->item($model->company, new CompanyTransformer());
     }
-
-    public function includeImages(Branch $model){
-        return $this->collection($model->branchImages, new BranchImageTransformer());
-    }
-
-
 }

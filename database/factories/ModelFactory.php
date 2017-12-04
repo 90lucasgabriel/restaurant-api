@@ -12,6 +12,7 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory 
+ * 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
 
@@ -39,63 +40,33 @@ $factory->define(App\Models\Branch::class, function (Faker\Generator $faker) {
     return [
         'company_id'   => rand(1,20),
         
-        'phone_1'      => $faker->e164PhoneNumber,
-        'phone_2'      => $faker->e164PhoneNumber,
-        'email_1'      => $faker->email,
-        'email_2'      => $faker->email,
+        'phone_1'      => $faker->phoneNumberCleared(false),
+        'phone_2'      => $faker->phoneNumberCleared(false),
+        'email_1'      => $faker->companyEmail,
+        'email_2'      => $faker->companyEmail,
         'website'      => $faker->url,
         'facebook'     => $faker->url,
         'twitter'      => $faker->url,
         'instagram'    => $faker->url,
         
         'address'      => $faker->streetName,
+        'number'       => rand(10,2000),
         'complement'   => $faker->word,
         'zipcode'      => $faker->postcode,
         'neighborhood' => $faker->word,
         'city'         => $faker->city,
-        'state'        => $faker->state,
-        'country'      => 'Brazil'
+        'state'        => $faker->stateAbbr,
+        'country'      => 'Brasil'
     ];
 });
 
-
-$factory->define(App\Models\BranchImage::class, function (Faker\Generator $faker) {
-    $host     = 'http://lorempixel.com';
-    $width    = rand(350, 550);
-    $height   = rand(350, 550);
-    $category = 'fashion';
-    $id       = rand(1, 10);
-    
-    $url      = $host . '/' . $width . '/' . $height . '/' . $category . '/' . $id;
-
+$factory->define(App\Models\Category::class, function (Faker\Generator $faker) {
     return [
-        'url'               => $url,
-        'description'       => $faker->sentence,
-        'index'             => 0
-    ];
-});
-
-$factory->define(App\Models\BranchJob::class, function (Faker\Generator $faker) {
-    return [
-        'branch_id'         => rand(1,20),
-        'job_id'            => rand(1,20),
-        'price'             => rand(20, 200),
-        'price_sale'        => rand(20, 200),        
-        'duration'          => (rand(1, 20))/2
-    ];
-});
-
-$factory->define(App\Models\BranchJobEmployee::class, function (Faker\Generator $faker) {
-    return [
-        'branch_job_id'     => rand(1,40),
-        'employee_id'       => rand(1,20)
-    ];
-});
-
-$factory->define(App\Models\BranchUserFavorite::class, function (Faker\Generator $faker) {
-    return [
-        'branch_id'         => rand(2,20),
-        'user_id'           => rand(2,10),
+        'company_id'   => rand(1,20),
+        'parent_id'    => $faker->randomNumber(5),
+        'name'         => $faker->name,
+        'description'  => $faker->text,
+        'image'        => $faker->imageUrl(rand(100, 200), rand(100, 200), 'abstract', true, rand(1, 10)),
     ];
 });
 
@@ -112,7 +83,7 @@ $factory->define(App\Models\Client::class, function (Faker\Generator $faker) {
         'zipcode'      => $faker->postcode,
         'neighborhood' => $faker->word,
         'city'         => $faker->city,
-        'state'        => $faker->state,
+        'state'        => $faker->stateAbbr,
         'country'      => 'Brazil'
     ];
 });
@@ -125,29 +96,15 @@ $factory->define(App\Models\Coupon::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Models\Company::class, function (Faker\Generator $faker) {
-    $host     = 'http://lorempixel.com';
-    $width    = rand(100, 200);
-    $height   = rand(100, 200);
-    $category = 'abstract';
-    $id       = rand(1, 10);
-    
-    $url      = $host . '/' . $width . '/' . $height . '/' . $category . '/' . $id;
-
     return [
-        'name'        => $faker->company,
-        'description' => $faker->sentence,
-        'cpf'         => $faker->randomNumber(5),
-        'cnpj'        => $faker->randomNumber(5),
-        'avatar'      => $url,//$faker->imageUrl(100,200,'abstract'),
-
-        'phone_1'     => $faker->e164PhoneNumber,
-        'phone_2'     => $faker->e164PhoneNumber,
-        'email_1'     => $faker->email,
-        'email_2'     => $faker->email,
-        'website'     => $faker->url,
-        'facebook'    => $faker->url,
-        'twitter'     => $faker->url,
-        'instagram'   => $faker->url,
+        'name'              => $faker->company,
+        'description'       => $faker->realText(300),
+        'cnpj'              => $faker->cnpj,
+        'avatar'            => $faker->imageUrl(rand(100, 200), rand(100, 200), 'abstract', true, rand(1, 10)),
+        'website'           => $faker->url,
+        'facebook'          => $faker->url,
+        'twitter'           => $faker->url,
+        'instagram'         => $faker->url,
     ];
 });
 
@@ -166,8 +123,16 @@ $factory->define(App\Models\Employee::class, function (Faker\Generator $faker) {
         'zipcode'      => $faker->postcode,
         'neighborhood' => $faker->word,
         'city'         => $faker->city,
-        'state'        => $faker->state,
+        'state'        => $faker->stateAbbr,
         'country'      => 'Brazil'
+    ];
+});
+
+$factory->define(App\Models\Menu::class, function (Faker\Generator $faker) {
+    return [
+        'company_id'        => rand(1,20),
+        'name'              => $faker->name,
+        'description'       => $faker->text
     ];
 });
 
@@ -200,25 +165,13 @@ $factory->define(App\Models\OrderItem::class, function (Faker\Generator $faker) 
     return [];
 });
 
-
-$factory->define(App\Models\Job::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\Product::class, function (Faker\Generator $faker) {
     return [
-        'name'              => $faker->word,
-        'description'       => $faker->sentence,
-        //'price'             => $faker->numberBetween(10, 50)
-    ];
-});
-
-$factory->define(App\Models\JobCategory::class, function (Faker\Generator $faker) {
-    return [
-        'name'              => $faker->word,
-        'description'       => $faker->sentence,
-    ];
-});
-
-$factory->define(App\Models\Time::class, function (Faker\Generator $faker) {
-    return [
-        'description'       => $faker->time
+        'company_id'        => rand(1,20),
+        'category_id'       => $faker->randomNumber(5),
+        'name'              => $faker->name,
+        'description'       => $faker->text,
+        'image'             => $faker->imageUrl(rand(100, 200), rand(100, 200), 'abstract', true, rand(1, 10)),
     ];
 });
 
@@ -229,12 +182,5 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
         'email'             => $faker->unique()->safeEmail,
         'password'          => bcrypt(str_random(10)),
         'remember_token'    => str_random(10),
-    ];
-});
-
-
-$factory->define(App\Models\Weekday::class, function (Faker\Generator $faker) {
-    return [
-        'description'       => $faker->dayOfWeek,
     ];
 });

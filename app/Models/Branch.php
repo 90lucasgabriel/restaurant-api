@@ -6,10 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
+/**
+ * Class Company
+ * 
+ * @package namespace App\Models;
+ */
 class Branch extends Model implements Transformable
 {
     use TransformableTrait;
 
+    /**
+     * Fields to create new model mannualy.
+     *
+     * @var array
+     */
     protected $fillable = [
         'company_id',
         
@@ -23,6 +33,7 @@ class Branch extends Model implements Transformable
         'instagram',
         
         'address',
+        'number',
         'complement', 
         'zipcode',
         'neighborhood', 
@@ -31,20 +42,21 @@ class Branch extends Model implements Transformable
         'country' 
     ];
 
+    /**
+     * Company Relationship 1->1
+     *
+     * @return ['data'=>[App\Models\Branch]]
+     */
     public function company(){
         return $this->belongsTo(Company::class);
     }
 
-    public function branchImages(){
-        return $this->hasMany(BranchImage::class);
+    /**
+     * Menu Relationship 1-n
+     *
+     * @return ['data'=>[App\Models\Menu]]
+     */
+    public function menus(){
+        return $this->belongsToMany(Menu::class)->withTimestamps();
     }
-
-    public function branchUserFavorites(){
-        return $this->belongsToMany(UserBranchFavorite::class, 'user_branch_favorites', 'branch_id', 'user_id')->withTimestamps();
-    }
-
-    public function branchJobs(){
-        return $this->belongsToMany(BranchJob::class, 'branches_jobs', 'job_id', 'branch_id')->withTimestamps();
-    }
-
 }

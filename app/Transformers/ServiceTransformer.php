@@ -2,13 +2,13 @@
 namespace App\Transformers;
 
 use League\Fractal\TransformerAbstract;
-use App\Models\Product;
+use App\Models\Service;
 
-class ProductTransformer extends TransformerAbstract
+class ServiceTransformer extends TransformerAbstract
 {
     protected $availableIncludes = ['images'];
 
-    public function transform(Product $model)
+    public function transform(Service $model)
     {
         return [
             'id'         => (int) $model->id,
@@ -20,8 +20,8 @@ class ProductTransformer extends TransformerAbstract
         ];
     }
 
-    public function includeImages(Product $model){
-        return $this->collection($model->productImage, new ProductImageTransformer());
+    public function includeImages(Service $model){
+        return $this->collection($model->productImage, new ServiceImageTransformer());
     }
 
 }

@@ -17,8 +17,30 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['middleware' => 'cors'], function(){
+//Route::group(['middleware' => 'cors'], function(){
+		
+	Route::resource('company', 		'Api\CompanyController', 	['except'=>['create', 'edit', 'delete']]);
+	
+	Route::group(['prefix' => 'company/{company_id}/', 'as' => 'company.'], function(){
+		Route::resource('branch', 				'Api\BranchController', 				['except'=>['create', 'edit', 'delete']]);
+		Route::resource('category', 			'Api\CategoryController', 			['except'=>['create', 'edit', 'delete']]);
+		Route::resource('product', 				'Api\ProductController', 				['except'=>['create', 'edit', 'delete']]);
+		
+		Route::resource('menu', 					'Api\MenuController', 					['except'=>['create', 'edit', 'delete']]);
+		Route::post(		'menu/{menu_id}/product', 					['as'=>'menu.product.sync', 	'uses'=>'Api\MenuController@syncProduct']);
+		Route::get(			'menu/{menu_id}/product', 					['as'=>'menu.product.index', 	'uses'=>'Api\MenuController@queryProduct']);
+		Route::post(		'menu/{menu_id}/branch', 						['as'=>'menu.branch.sync', 		'uses'=>'Api\MenuController@syncBranch']);
+		Route::get(			'menu/{menu_id}/branch', 						['as'=>'menu.branch.index', 	'uses'=>'Api\MenuController@queryBranch']);
+		
+		/*
+		Route::resource('menu-product', 	'Api\MenuProductController', 		['except'=>['create', 'edit', 'delete']]);
+		Route::resource('menu-branch', 	  'Api\MenuBranchController', 		['except'=>['create', 'edit', 'delete']]);
+		Route::delete('menu-product', 		['as'=>'menu-product.deleteByCompany', 	'uses'=>'Api\MenuProductController@deleteByCompany']);
+		Route::delete('menu-product/menu/{menu_id}',['as'=>'menu-product.deleteByMenu', 		'uses'=>'Api\MenuProductController@deleteByMenu']);
+		Route::delete('menu-branch', 			['as'=>'menu-branch.deleteByCompany', 	'uses'=>'Api\MenuBranchController@deleteByCompany']);*/
+	});
 
+		/*
 		Route::post('/oauth/token', ['as' => 'oauth.token',	'uses' => '\Laravel\Passport\Http\Controllers\AccessTokenController@issueToken'])->middleware('checkLogin', 'throttle');		
 		Route::group(['prefix' => 'client', 'as' => 'client.'], function(){
 			Route::group(['prefix' => 'companies', 'as' => 'companies.'], function(){
@@ -27,12 +49,6 @@ Route::group(['middleware' => 'cors'], function(){
 				Route::get('', 							['as' => 'index', 	'uses' => 'Api\CompaniesController@index']);
 			});
 
-			Route::group(['prefix' => 'branches', 'as' => 'branches.'], function(){
-				Route::get('/favorites/{userId}',		['as' => 'favorites', 	'uses' => 'Api\BranchesController@queryFavoritesByUser']);
-				Route::get('/search/{data}', 			['as' => 'search', 		'uses' => 'Api\BranchesController@search']);
-				Route::get('/{id}', 					['as' => 'show', 		'uses' => 'Api\BranchesController@show']);
-				Route::get('', 							['as' => 'index', 		'uses' => 'Api\BranchesController@index']);
-			});
 
 			Route::group(['prefix' => 'jobs', 'as' => 'jobs.'], function(){
 				Route::get('/by-branch/{branchId}',		['as' => 'by-branch',	'uses' => 'Api\BranchesJobsController@queryJobsByBranch']);
@@ -84,6 +100,6 @@ Route::group(['middleware' => 'cors'], function(){
 		Route::group(['prefix' => 'coupons', 'as' => 'coupons.'], function(){
 			Route::get('/code/{code}', 						['as' => 'findByCode', 'uses' => 'Api\CouponsController@findByCode']);
 		});		
-
-});
+		*/
+//});
 

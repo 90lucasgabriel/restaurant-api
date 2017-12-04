@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -185,7 +185,8 @@ return [
          * Vendor Providers
          */
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
-        /*Barryvdh\Cors\ServiceProvider::class,*/
+        Mpociot\ApiDoc\ApiDocGeneratorServiceProvider::class,
+        Barryvdh\Cors\ServiceProvider::class
 
     ],
 
@@ -239,5 +240,7 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
     ],
+
+    'faker_locale' => 'pt_BR',
 
 ];

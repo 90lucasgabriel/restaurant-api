@@ -16,18 +16,6 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\BranchRepositoryEloquent::class
         );
         $this->app->bind(
-            \App\Repositories\BranchFavoriteRepository::class, 
-            \App\Repositories\BranchFavoriteRepositoryEloquent::class
-        );
-        $this->app->bind(
-            \App\Repositories\BranchJobRepository::class, 
-            \App\Repositories\BranchJobRepositoryEloquent::class
-        );
-        $this->app->bind(
-            \App\Repositories\BranchJobEmployeeRepository::class, 
-            \App\Repositories\BranchJobEmployeeRepositoryEloquent::class
-        );
-        $this->app->bind(
             \App\Repositories\CategoryRepository::class, 
             \App\Repositories\CategoryRepositoryEloquent::class
         );
@@ -48,8 +36,16 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\EmployeeRepositoryEloquent::class
         );
         $this->app->bind(
-            \App\Repositories\JobRepository::class, 
-            \App\Repositories\JobRepositoryEloquent::class
+            \App\Repositories\MenuRepository::class, 
+            \App\Repositories\MenuRepositoryEloquent::class
+        );
+        $this->app->bind(
+            \App\Repositories\MenuBranchRepository::class, 
+            \App\Repositories\MenuBranchRepositoryEloquent::class
+        );
+        $this->app->bind(
+            \App\Repositories\MenuProductRepository::class, 
+            \App\Repositories\MenuProductRepositoryEloquent::class
         );
         $this->app->bind(
             \App\Repositories\OrderRepository::class, 

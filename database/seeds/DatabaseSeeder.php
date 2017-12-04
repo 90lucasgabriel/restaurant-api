@@ -14,11 +14,12 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        $this->call(WeekdayTableSeeder::class);
-        $this->call(TimeTableSeeder::class);
-        $this->call(CompanyTableSeeder::class);
-        $this->call(JobCategoryTableSeeder::class);
         $this->call(UserTableSeeder::class);
+        $this->call(CompanyTableSeeder::class);
+        $this->call(BranchTableSeeder::class);
+        $this->call(CategoryTableSeeder::class);
+        $this->call(ProductTableSeeder::class);
+        $this->call(MenuTableSeeder::class);
         //$this->call(CouponTableSeeder::class);
         //$this->call(OrderTableSeeder::class);
         $this->call(OauthClientTableSeeder::class);

@@ -12,7 +12,11 @@ use Prettus\Repository\Presenter\FractalPresenter;
  */
 class CompanyPresenter extends FractalPresenter
 {
-
+     /**
+     * Transformer
+     *
+     * @return \League\Fractal\TransformerAbstract
+     */
     public function getTransformer()
     {
         return new CompanyTransformer();

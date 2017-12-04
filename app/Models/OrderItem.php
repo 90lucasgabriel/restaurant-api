@@ -17,10 +17,20 @@ class OrderItem extends Model implements Transformable
         'quantity',
     ];
 
+    /**
+     * Service Relationship
+     *
+     * @return void
+     */
     public function service(){
         return $this->belongsTo(Service::class);
     }
 
+    /**
+     * Order Relationship
+     *
+     * @return void
+     */
     public function order(){
         return $this->belongsTo(Order::class);
     }
