@@ -4,7 +4,7 @@ Laravel Framework
 
 
 Install dependencies:
-composer update
+composer install
 
 Generate key:
 php artisan key:generate
