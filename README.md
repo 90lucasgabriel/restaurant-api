@@ -1,27 +1,28 @@
 # Restaurant API RESTful
-This is a Laravel Application.
+This is a [Laravel](https://laravel.com/) Application.
 
-Make sure you have PHP, MySQL, Apache and Composer installed.
+## Prerequisites
+Make sure you have PHP, MySQL, Apache and [Composer](https://getcomposer.org/) installed.
 
 
-## Install
+## Installing
 - Clone this repo:
 ```
-$ git clone git@github.com:90lucasgabriel/restaurant-api.git
+git clone git@github.com:90lucasgabriel/restaurant-api.git
 ```
 - Access directory:
 ```
-$ cd restaurant-api
+cd restaurant-api
 ```
 - Install dependencies:
 ```
-$ composer install
+composer install
 ```
 - Create a copy of *.env.example* and rename to *.env*;
 
 - Generate Laravel App Key:
 ```
-$ php artisan key:generate
+php artisan key:generate
 ```
 - Create database;
 
@@ -29,14 +30,14 @@ $ php artisan key:generate
 
 - Create tables and seed database:
 ```
-$ php artisan migrate:refresh --seed
+php artisan migrate:refresh --seed
 ```
 
 
-## Run
+## Running
 - Serve the app:
 ```
-$ php artisan serve
+php artisan serve
 ```
 
 Head to http://localhost:8000 in your browser and you'll see the app running.
