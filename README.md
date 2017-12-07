@@ -1,9 +1,10 @@
-## Restaurant API RESTful
+# Restaurant API RESTful
 This is a Laravel Application.
 
 Make sure you have PHP, MySQL, Apache and Composer installed.
 
-## Installing
+
+## Install
 - Clone this repo:
 ```
 $ git clone git@github.com:90lucasgabriel/restaurant-api.git
@@ -30,6 +31,9 @@ $ php artisan key:generate
 ```
 $ php artisan migrate:refresh --seed
 ```
+
+
+## Run
 - Serve the app:
 ```
 $ php artisan serve
