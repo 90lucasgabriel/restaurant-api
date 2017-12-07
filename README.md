@@ -1,5 +1,5 @@
-# Restaurant API RESTful
-This is a [Laravel](https://laravel.com/) Application.
+# Restaurant RESTful API
+This is a [Laravel Framework](https://laravel.com/) Application.
 
 ## Prerequisites
 Make sure you have PHP, MySQL, Apache and [Composer](https://getcomposer.org/) installed.
