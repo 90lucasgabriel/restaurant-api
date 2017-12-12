@@ -16,15 +16,12 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id')->onDelete('cascade');
             $table->integer('diningtable_id')->unsigned();
-            // $table->integer('client_id')->unsigned();
 
             $table->decimal('total');
             $table->smallInteger('status')->default(0);
             $table->timestamps();
             
-            $table->foreign('diningtable_id')->references('id')->on('diningtables')->onDelete('cascade');
-            // $table->foreign('client_id')->references('id')->on('users')->onDelete('cascade');
-        });
+            $table->foreign('diningtable_id')->references('id')->on('diningtables')->onDelete('cascade');        });
     }
 
     /**

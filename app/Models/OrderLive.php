@@ -6,16 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
-class OrderMenuProduct extends Model implements Transformable
+class OrderLive extends Model implements Transformable
 {
     use TransformableTrait;
 
     protected $fillable = [
         'order_id',
-        'menu_product_id',
-        'status_id',
+        'menu_id',
+        'product_id',
+        'order_status_id',
+        'order_type_id',
         
+        'price',
         'quantity',
+        'total',
         'comment'
     ];
 
