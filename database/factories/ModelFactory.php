@@ -38,53 +38,53 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Models\Branch::class, function (Faker\Generator $faker) {
     return [
-        'company_id'   => rand(1,20),
-        
-        'phone_1'      => $faker->phoneNumberCleared(false),
-        'phone_2'      => $faker->phoneNumberCleared(false),
-        'email_1'      => $faker->companyEmail,
-        'email_2'      => $faker->companyEmail,
-        'website'      => $faker->url,
-        'facebook'     => $faker->url,
-        'twitter'      => $faker->url,
-        'instagram'    => $faker->url,
-        
-        'address'      => $faker->streetName,
-        'number'       => rand(10,2000),
-        'complement'   => $faker->word,
-        'zipcode'      => $faker->postcode,
-        'neighborhood' => $faker->word,
-        'city'         => $faker->city,
-        'state'        => $faker->stateAbbr,
-        'country'      => 'Brasil'
+        'company_id'        => rand(1,20),
+
+        'phone_1'           => $faker->phoneNumberCleared(false),
+        'phone_2'           => $faker->phoneNumberCleared(false),
+        'email_1'           => $faker->companyEmail,
+        'email_2'           => $faker->companyEmail,
+        'website'           => $faker->url,
+        'facebook'          => $faker->url,
+        'twitter'           => $faker->url,
+        'instagram'         => $faker->url,
+
+        'address'           => $faker->streetName,
+        'number'            => rand(10,2000),
+        'complement'        => $faker->word,
+        'zipcode'           => $faker->postcode,
+        'neighborhood'      => $faker->word,
+        'city'              => $faker->city,
+        'state'             => $faker->stateAbbr,
+        'country'           => 'Brasil'
     ];
 });
 
 $factory->define(App\Models\Category::class, function (Faker\Generator $faker) {
     return [
-        'company_id'   => rand(1,20),
-        'parent_id'    => $faker->randomNumber(5),
-        'name'         => $faker->name,
-        'description'  => $faker->text,
-        'image'        => $faker->imageUrl(rand(100, 200), rand(100, 200), 'abstract', true, rand(1, 10)),
+        'company_id'        => rand(1,20),
+        'parent_id'         => $faker->randomNumber(5),
+        'name'              => $faker->name,
+        'description'       => $faker->text,
+        'image'             => $faker->imageUrl(rand(100, 200), rand(100, 200), 'abstract', true, rand(1, 10)),
     ];
 });
 
 $factory->define(App\Models\Client::class, function (Faker\Generator $faker) {
     return [
-        'user_id'      => rand(1,20),
-        'cpf'          => $faker->randomNumber(5),
-        'cnpj'         => $faker->randomNumber(5),
-        'phone_1'      => $faker->e164PhoneNumber,
-        'phone_2'      => $faker->e164PhoneNumber,
-      
-        'address'      => $faker->streetName,
-        'complement'   => $faker->word,
-        'zipcode'      => $faker->postcode,
-        'neighborhood' => $faker->word,
-        'city'         => $faker->city,
-        'state'        => $faker->stateAbbr,
-        'country'      => 'Brazil'
+        'user_id'           => rand(1,20),
+        'cpf'               => $faker->randomNumber(5),
+        'cnpj'              => $faker->randomNumber(5),
+        'phone_1'           => $faker->e164PhoneNumber,
+        'phone_2'           => $faker->e164PhoneNumber,
+
+        'address'           => $faker->streetName,
+        'complement'        => $faker->word,
+        'zipcode'           => $faker->postcode,
+        'neighborhood'      => $faker->word,
+        'city'              => $faker->city,
+        'state'             => $faker->stateAbbr,
+        'country'           => 'Brazil'
     ];
 });
 
@@ -110,21 +110,21 @@ $factory->define(App\Models\Company::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Models\Employee::class, function (Faker\Generator $faker) {
     return [
-        'user_id'      => rand(1,20),
-        'branch_id'    => rand(1,30),
-        'cpf'          => $faker->randomNumber(5),
-        'cnpj'         => $faker->randomNumber(5),
-        
-        'phone_1'      => $faker->e164PhoneNumber,
-        'phone_2'      => $faker->e164PhoneNumber,
-        
-        'address'      => $faker->streetName,
-        'complement'   => $faker->word,
-        'zipcode'      => $faker->postcode,
-        'neighborhood' => $faker->word,
-        'city'         => $faker->city,
-        'state'        => $faker->stateAbbr,
-        'country'      => 'Brazil'
+        'user_id'           => rand(1,20),
+        'branch_id'         => rand(1,30),
+        'cpf'               => $faker->randomNumber(5),
+        'cnpj'              => $faker->randomNumber(5),
+
+        'phone_1'           => $faker->e164PhoneNumber,
+        'phone_2'           => $faker->e164PhoneNumber,
+
+        'address'           => $faker->streetName,
+        'complement'        => $faker->word,
+        'zipcode'           => $faker->postcode,
+        'neighborhood'      => $faker->word,
+        'city'              => $faker->city,
+        'state'             => $faker->stateAbbr,
+        'country'           => 'Brazil'
     ];
 });
 
@@ -136,11 +136,20 @@ $factory->define(App\Models\Menu::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Models\MenuTime::class, function (Faker\Generator $faker) {
+    return [
+        'company_id'        => rand(1,20),
+        'day'               => rand(0,6)
+        // 'time_start'        =>
+        // 'time_end'          =>
+    ];
+});
+
 $factory->define(App\Models\OauthClient::class, function (Faker\Generator $faker) {
-    $name         = $faker->name;
-    $code         = md5($faker->name.uniqid(rand(), true));
-    $id           = base64_encode(hash_hmac('sha256', $code, 'belezaNameApplication', true));
-    $secret       = base64_encode(hash_hmac('sha256', $code, 'belezaSecretApplication', true));
+    $name                   = $faker->name;
+    $code                   = md5($faker->name.uniqid(rand(), true));
+    $id                     = base64_encode(hash_hmac('sha256', $code, 'belezaNameApplication', true));
+    $secret                 = base64_encode(hash_hmac('sha256', $code, 'belezaSecretApplication', true));
 
     return [
         'id'                => $id,

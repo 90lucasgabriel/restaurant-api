@@ -27,10 +27,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 		Route::resource('product', 				'Api\ProductController', 				['except'=>['create', 'edit', 'delete']]);
 		
 		Route::resource('menu', 					'Api\MenuController', 					['except'=>['create', 'edit', 'delete']]);
-		Route::post(		'menu/{menu_id}/product', 					['as'=>'menu.product.sync', 	'uses'=>'Api\MenuController@syncProduct']);
-		Route::get(			'menu/{menu_id}/product', 					['as'=>'menu.product.index', 	'uses'=>'Api\MenuController@queryProduct']);
 		Route::post(		'menu/{menu_id}/branch', 						['as'=>'menu.branch.sync', 		'uses'=>'Api\MenuController@syncBranch']);
 		Route::get(			'menu/{menu_id}/branch', 						['as'=>'menu.branch.index', 	'uses'=>'Api\MenuController@queryBranch']);
+		Route::post(		'menu/{menu_id}/product', 					['as'=>'menu.product.sync', 	'uses'=>'Api\MenuController@syncProduct']);
+		Route::get(			'menu/{menu_id}/product', 					['as'=>'menu.product.index', 	'uses'=>'Api\MenuController@queryProduct']);
+		Route::post(		'menu/{menu_id}/time', 							['as'=>'menu.time.sync', 			'uses'=>'Api\MenuController@syncTime']);
+		Route::get(			'menu/{menu_id}/time', 							['as'=>'menu.time.index', 		'uses'=>'Api\MenuController@queryTime']);
 		
 	});
 //});

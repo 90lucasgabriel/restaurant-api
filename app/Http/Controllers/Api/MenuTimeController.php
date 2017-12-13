@@ -3,38 +3,38 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\MenuBranchRepository;
-use App\Services\MenuBranchService;
-use App\Models\MenuBranch;
+use App\Repositories\MenuTimeRepository;
+use App\Services\MenuTimeService;
+use App\Models\MenuTime;
 
 /**
- * Class MenuBranchController
+ * Class MenuTimeController
  * 
  * @package namespace App\Http\Controllers\Api;
  */
-class MenuBranchController extends Controller{    
+class MenuTimeController extends Controller{    
     /**
      * Repository of specified resource.
      *
-     * @var MenuBranchRepository
+     * @var MenuTimeRepository
      */
     private $repository;
 
     /**
      * Service of specified resource.
      *
-     * @var MenuBranchService
+     * @var MenuTimeService
      */
     private $service;
 
     /**
      * Constructor
      *
-     * @param MenuBranchRepository $repository
+     * @param MenuTimeRepository $repository
      */
     public function __construct(
-        MenuBranchRepository      $repository,
-        MenuBranchService         $service
+        MenuTimeRepository      $repository,
+        MenuTimeService         $service
     ){
         $this->repository   =   $repository;
         $this->service      =   $service;
@@ -45,7 +45,7 @@ class MenuBranchController extends Controller{
      * 
      * @param Request $request
      * @param int $company_id
-     * @return ['data'=>[App\Models\MenuBranch], 'meta'=>[pagination]]
+     * @return ['data'=>[App\Models\MenuTime], 'meta'=>[pagination]]
      */
     public function index(Request $request, int $company_id){
         $data               = $request->all();
@@ -59,7 +59,7 @@ class MenuBranchController extends Controller{
      *
      * @param  int  $company_id
      * @param  int  $id
-     * @return ['data'=>[App\Models\MenuBranch]]
+     * @return ['data'=>[App\Models\MenuTime]]
      */
     public function show(int $company_id, int $id){
         $item       = $this->service->find($company_id, $id);
@@ -71,7 +71,7 @@ class MenuBranchController extends Controller{
      * Create new item of specified resource
      *
      * @param Request $request
-     * @return ['data'=>[App\Models\MenuBranch]]
+     * @return ['data'=>[App\Models\MenuTime]]
      */
     public function store(Request $request){
         $data       = $request->all();
@@ -86,7 +86,7 @@ class MenuBranchController extends Controller{
      * @param Request $request
      * @param int $company_id
      * @param int $id
-     * @return ['data'=>[App\Models\MenuBranch]]
+     * @return ['data'=>[App\Models\MenuTime]]
      */
     public function update(Request $request, int $company_id, int $id){
         $data       = $request->all();
@@ -103,18 +103,6 @@ class MenuBranchController extends Controller{
      */
     public function destroy(int $company_id, int $id){
         $success    = $this->repository->delete($id);
-        
-        return [ 'success' => $success ];
-    }
-
-        /**
-     * Delete item of specified resource
-     *
-     * @param int $company_id
-     * @return success->true|false
-     */
-    public function deleteByCompany(int $company_id){
-        $success    = $this->repository->deleteWhere(['company_id' => $company_id]);
         
         return [ 'success' => $success ];
     }

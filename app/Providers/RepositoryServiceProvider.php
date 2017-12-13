@@ -40,12 +40,8 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\MenuRepositoryEloquent::class
         );
         $this->app->bind(
-            \App\Repositories\MenuBranchRepository::class, 
-            \App\Repositories\MenuBranchRepositoryEloquent::class
-        );
-        $this->app->bind(
-            \App\Repositories\MenuProductRepository::class, 
-            \App\Repositories\MenuProductRepositoryEloquent::class
+            \App\Repositories\MenuTimeRepository::class, 
+            \App\Repositories\MenuTimeRepositoryEloquent::class
         );
         $this->app->bind(
             \App\Repositories\OrderRepository::class, 

@@ -6,14 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
-class MenuBranch extends Model implements Transformable
+class MenuTime extends Model implements Transformable
 {
     use TransformableTrait;
 
     protected $fillable = [
-        'company_id',
         'menu_id',
-        'branch_id'
+        'day',
+        'time_start',
+        'time_end'
     ];
 
     /**
@@ -23,14 +24,5 @@ class MenuBranch extends Model implements Transformable
      */
     public function menu(){
         return $this->belongsTo(Menu::class);
-    }
-
-    /**
-     * Branch Relationship 1-1
-     *
-     * @return void
-     */
-    public function branch(){
-        return $this->belongsTo(Branch::class);
     }
 }

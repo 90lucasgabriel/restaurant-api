@@ -4,6 +4,8 @@ namespace App\Services;
 use App\Http\Requests;
 use App\Repositories\MenuRepository;
 use App\Models\Menu;
+use App\Models\MenuTime;
+use \Carbon\Carbon;
 
 /**
  * Class MenuService
@@ -68,6 +70,32 @@ class MenuService{
                 'id'         => $id,
             ])['data'][0];
         $item = ['data' => $item];
+
+        return $item;
+    }
+
+    /**
+     * Sync time list of menu_time
+     * @param Request $request
+     * @param int $company_id
+     * @param int $id
+     * @return ['data'=>[App\Models\Time]]
+     */
+    public function syncTime(array $data, int $id){
+        $item        = Menu::find($id);
+        $timeList    = [];
+        
+        foreach ($data['time'] as $time) {
+            array_push($timeList, new MenuTime([
+                    'id'            => $id, 
+                    'day'           => $time['day'], 
+                    'time_start'    => $time['time_start'], 
+                    'time_end'      => $time['time_end']
+                ])
+            );
+        }
+        $item->times()->delete();
+        $item->times()->saveMany($timeList);
 
         return $item;
     }

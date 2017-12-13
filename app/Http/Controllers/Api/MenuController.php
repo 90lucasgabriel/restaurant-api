@@ -110,10 +110,43 @@ class MenuController extends Controller{
 
 
 
+    // TIME SECTION -------------------------------
+    /**
+     * Sync branch list of menu_branch
+     * @param Request $request
+     * @param int $company_id
+     * @param int $id
+     * @return ['data'=>[App\Models\Time]]
+     */
+    public function syncTime(Request $request, int $company_id, int $id){
+        $data       = $request->all();
+        $item       = $this->service->syncTime($data, $id);
+
+        return $item->times;
+    }
+
+    /**
+     * Update item of specified resource
+     *
+     * @param Request $request
+     * @param int $company_id
+     * @param int $id
+     * @return ['data'=>[App\Models\Time]]
+     */
+    public function queryTime(int $company_id, int $id){
+        //$item       = $this->repository->find($id);
+        //return $item;
+        $item       = Menu::find($id);
+        
+        return ['data' => $item->times];
+    }
+
+
+
+
     // PRODUCT SECTION -------------------------------
     /**
      * Sync products of menu_product
-     *
      * @param Request $request
      * @param int $company_id
      * @param int $id

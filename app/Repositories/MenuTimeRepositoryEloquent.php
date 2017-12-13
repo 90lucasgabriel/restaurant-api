@@ -4,16 +4,16 @@ namespace App\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\MenuBranchRepository;
-use App\Presenters\MenuBranchPresenter;
-use App\Models\MenuBranch;
+use App\Repositories\MenuTimeRepository;
+use App\Presenters\MenuTimePresenter;
+use App\Models\MenuTime;
 
 /**
- * Class MenuBranchRepositoryEloquent
+ * Class MenuTimeRepositoryEloquent
  * 
  * @package namespace App\Repositories;
  */
-class MenuBranchRepositoryEloquent extends BaseRepository implements MenuBranchRepository
+class MenuTimeRepositoryEloquent extends BaseRepository implements MenuTimeRepository
 {
     /**
      * Verify if skip Presenter
@@ -23,10 +23,10 @@ class MenuBranchRepositoryEloquent extends BaseRepository implements MenuBranchR
     protected $skipPresenter = false;
 
     protected $fieldSearchable = [
-        'id',
-        'company_id',
         'menu_id',
-        'branch_id'
+        'day',
+        'time_start',
+        'time_end'
     ];
     
     /**
@@ -36,7 +36,7 @@ class MenuBranchRepositoryEloquent extends BaseRepository implements MenuBranchR
      */
     public function model()
     {
-        return MenuBranch::class;
+        return MenuTime::class;
     }
 
     /**
@@ -65,6 +65,6 @@ class MenuBranchRepositoryEloquent extends BaseRepository implements MenuBranchR
      * @return void
      */
     public function presenter(){
-        return MenuBranchPresenter::class;
+        return MenuTimePresenter::class;
     }
 }

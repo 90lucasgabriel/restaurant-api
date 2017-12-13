@@ -2,23 +2,22 @@
 
 namespace App\Presenters;
 
-use App\Transformers\MenuProductTransformer;
+use App\Transformers\MenuTimeTransformer;
 use Prettus\Repository\Presenter\FractalPresenter;
 
 /**
- * Class MenuProductPresenter
+ * Class MenuTimePresenter
  *
  * @package namespace App\Presenters;
  */
-class MenuProductPresenter extends FractalPresenter
+class MenuTimePresenter extends FractalPresenter
 {
      /**
      * Transformer
-     *
      * @return \League\Fractal\TransformerAbstract
      */
     public function getTransformer()
     {
-        return new MenuProductTransformer();
+        return new MenuTimeTransformer();
     }
 }

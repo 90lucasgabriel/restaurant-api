@@ -18,7 +18,7 @@ class CreateMenusTable extends Migration
             $table->integer('company_id')->unsigned();
 
             $table->string('name');
-            $table->text('description')->nullable();            
+            $table->text('description')->nullable();
             $table->timestamps();
 
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
