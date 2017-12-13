@@ -122,23 +122,7 @@ class MenuController extends Controller{
         $data       = $request->all();
         $item       = $this->service->syncTime($data, $id);
 
-        return $item->times;
-    }
-
-    /**
-     * Update item of specified resource
-     *
-     * @param Request $request
-     * @param int $company_id
-     * @param int $id
-     * @return ['data'=>[App\Models\Time]]
-     */
-    public function queryTime(int $company_id, int $id){
-        //$item       = $this->repository->find($id);
-        //return $item;
-        $item       = Menu::find($id);
-        
-        return ['data' => $item->times];
+        return $item->time;
     }
 
 
@@ -156,23 +140,8 @@ class MenuController extends Controller{
         $data       = $request->all();
         $item       = $this->service->syncProduct($data, $id);
 
-        return $item->products;
+        return $item->product;
     }
-
-    /**
-     * Update item of specified resource
-     *
-     * @param Request $request
-     * @param int $company_id
-     * @param int $id
-     * @return ['data'=>[App\Models\Product]]
-     */
-    public function queryProduct(int $company_id, int $id){
-        $item       = Menu::find($id);
-        
-        return ['data' => $item->products];
-    }
-
 
 
 
@@ -189,20 +158,6 @@ class MenuController extends Controller{
         $data       = $request->all();
         $item       = $this->service->syncBranch($data, $id);
 
-        return $item->branches;
-    }
-
-    /**
-     * Update item of specified resource
-     *
-     * @param Request $request
-     * @param int $company_id
-     * @param int $id
-     * @return ['data'=>[App\Models\Branch]]
-     */
-    public function queryBranch(int $company_id, int $id){
-        $item       = Menu::find($id);
-        
-        return ['data' => $item->branches];
+        return $item->branch;
     }
 }

@@ -52,7 +52,7 @@ class Product extends Model implements Transformable
      *
      * @return ['data'=>[App\Models\Menu]]
      */
-    public function menus(){
+    public function menu(){
         return $this->belongsToMany(Menu::class)
             ->withPivot('price')
             ->withTimestamps();

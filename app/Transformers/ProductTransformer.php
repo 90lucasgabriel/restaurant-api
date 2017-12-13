@@ -3,6 +3,7 @@
 namespace App\Transformers;
 
 use League\Fractal\TransformerAbstract;
+use League\Fractal\Resource\Collection;
 use App\Models\Product;
 
 /**
@@ -24,7 +25,7 @@ class ProductTransformer extends TransformerAbstract
      *
      * @var array
      */
-    protected $availableIncludes = ['company'];
+    protected $availableIncludes = ['company','menu'];
 
     /**
      * Transform the \Product entity
@@ -34,14 +35,20 @@ class ProductTransformer extends TransformerAbstract
      */
     public function transform(Product $model)
     {
-        return [
+        $product =  [
             'id'            => (int) $model->id,
             'company_id'    => (int) $model->company_id,
-            'category_id'    => (int) $model->category_id,
+            'category_id'   => (int) $model->category_id,
             'name'          => $model->name,
             'description'   => $model->description,
-            'image'         => $model->image
+            'image'         => $model->image,
         ];
+        
+        if (isset($model->pivot->price)) {
+            $product['price'] = $model->pivot->price;
+        }
+        
+        return $product;
     }
 
     /**
@@ -62,5 +69,15 @@ class ProductTransformer extends TransformerAbstract
      */
     public function includeCategory(Product $model){
         return $this->item($model->category, new CategoryTransformer());
+    }
+    
+    /**
+     * Include menu's information
+     *
+     * @param Menu $model
+     * @return ['data'=>[App\Models\Menu]]
+     */
+     public function includeMenu(Product $model){
+        return $this->collection($model->menu, new MenuTransformer());
     }
 }

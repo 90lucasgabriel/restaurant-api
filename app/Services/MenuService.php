@@ -94,8 +94,8 @@ class MenuService{
                 ])
             );
         }
-        $item->times()->delete();
-        $item->times()->saveMany($timeList);
+        $item->time()->delete();
+        $item->time()->saveMany($timeList);
 
         return $item;
     }
@@ -117,7 +117,7 @@ class MenuService{
                 'price'      => $product['price']
             ]);
         }
-        $item->products()->sync($productList);
+        $item->product()->sync($productList);
 
         return $item;
     }
@@ -139,7 +139,7 @@ class MenuService{
                 'branch_id' => $branch['id']
             ]);
         }
-        $item->branches()->sync($branchList);
+        $item->branch()->sync($branchList);
 
         return $item;
     }

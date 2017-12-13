@@ -3,6 +3,7 @@
 namespace App\Transformers;
 
 use League\Fractal\TransformerAbstract;
+use League\Fractal\Resource\Collection;
 use App\Models\Menu;
 
 /**
@@ -24,7 +25,7 @@ class MenuTransformer extends TransformerAbstract
      *
      * @var array
      */
-    protected $availableIncludes = ['company'];
+    protected $availableIncludes = ['company', 'time', 'branch', 'product'];
 
     /**
      * Transform the \Menu entity
@@ -34,12 +35,18 @@ class MenuTransformer extends TransformerAbstract
      */
     public function transform(Menu $model)
     {
-        return [
+        $menu = [
             'id'            => (int) $model->id,
             'company_id'    => (int) $model->company_id,
             'name'          => $model->name,
             'description'   => $model->description
         ];
+
+        if (isset($model->pivot->price)) {
+            $menu['price'] = $model->pivot->price;
+        }
+
+        return $menu;
     }
 
     /**
@@ -50,5 +57,35 @@ class MenuTransformer extends TransformerAbstract
      */
     public function includeCompany(Menu $model){
         return $this->item($model->company, new CompanyTransformer());    
+    }
+    
+    /**
+     * Include time's information
+     *
+     * @param Time $model
+     * @return ['data'=>[App\Models\MenuTime]]
+     */
+    public function includeTime(Menu $model){
+        return $this->collection($model->time, new MenuTimeTransformer());    
+    }
+        
+    /**
+     * Include products's information
+     *
+     * @param Time $model
+     * @return ['data'=>[App\Models\Product]]
+     */
+    public function includeProduct(Menu $model){
+        return $this->collection($model->product, new ProductTransformer());    
+    }
+        
+    /**
+     * Include branch's information
+     *
+     * @param Time $model
+     * @return ['data'=>[App\Models\Branch]]
+     */
+    public function includeBranch(Menu $model){
+        return $this->collection($model->branch, new BranchTransformer());    
     }
 }

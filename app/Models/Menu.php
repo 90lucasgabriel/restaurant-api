@@ -38,15 +38,15 @@ class Menu extends Model implements Transformable
      * Time Relationship 1->n
      * @return ['data'=>[App\Models\MenuTime]]
      */
-    public function times(){
+    public function time(){
         return $this->hasMany(MenuTime::class);
     }
 
     /**
-     * Product Relationship 1-n
+     * Product Relationship n-n
      * @return ['data'=>[App\Models\Product]]
      */
-    public function products(){
+    public function product(){
         return $this->belongsToMany(Product::class)
             ->withPivot('price')
             ->withTimestamps();
@@ -56,7 +56,8 @@ class Menu extends Model implements Transformable
      * Branch Relationship 1-n
      * @return ['data'=>[App\Models\Branch]]
      */
-    public function branches(){
-        return $this->belongsToMany(Branch::class)->withTimestamps();
+    public function branch(){
+        return $this->belongsToMany(Branch::class)
+            ->withTimestamps();
     }
 }
