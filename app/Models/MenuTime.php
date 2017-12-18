@@ -11,6 +11,7 @@ class MenuTime extends Model implements Transformable
     use TransformableTrait;
 
     protected $fillable = [
+        'id',
         'menu_id',
         'day',
         'time_start',

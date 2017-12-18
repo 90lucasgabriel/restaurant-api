@@ -35,6 +35,7 @@ class MenuTimeTransformer extends TransformerAbstract
     public function transform(MenuTime $model)
     {
         return [
+            'id'            => (int) $model->id,
             'menu_id'       => (int) $model->menu_id,
             'day'           => $model->day,
             'time_start'    => $model->time_start,

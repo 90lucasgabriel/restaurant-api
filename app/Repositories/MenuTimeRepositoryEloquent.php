@@ -23,6 +23,7 @@ class MenuTimeRepositoryEloquent extends BaseRepository implements MenuTimeRepos
     protected $skipPresenter = false;
 
     protected $fieldSearchable = [
+        'id',
         'menu_id',
         'day',
         'time_start',
