@@ -1,8 +1,10 @@
+<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+
 # Restaurant RESTful API
 This is a [Laravel Framework](https://laravel.com/) Application.
 
 ## Prerequisites
-Make sure you have PHP, MySQL, Apache and [Composer](https://getcomposer.org/) installed.
+Make sure you have [PHP, MySQL, Apache](https://www.apachefriends.org/pt_br/index.html) and [Composer](https://getcomposer.org/) installed.
 
 
 ## Installing
@@ -24,6 +26,9 @@ composer install
 ```
 php artisan key:generate
 ```
+
+
+## Setting Database
 - Create database;
 
 - Insert into *.env*: database, user and password;
@@ -42,4 +47,4 @@ php artisan serve
 
 Head to http://localhost:8000 in your browser and you'll see the app running.
 
-You can test endpoints with [Postman](https://www.getpostman.com/).
+You can test endpoints with [Postman](https://www.getpostman.com/) or [Insomnia](https://insomnia.rest/).
