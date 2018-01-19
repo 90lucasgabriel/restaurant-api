@@ -2,6 +2,8 @@
     <IfModule mod_negotiation.c>
         Options -MultiViews
     </IfModule>
+    
+    php_flag opcache.enable Off
 
     RewriteEngine On
 
