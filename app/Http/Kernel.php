@@ -38,14 +38,14 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \Barryvdh\Cors\HandleCors::class,  
-            // \App\Http\Middleware\HttpsProtocol::class
+            \App\Http\Middleware\HttpsProtocol::class
         ],
 
         'api' => [
             'throttle:60,1',
             'bindings',
             \Barryvdh\Cors\HandleCors::class,            
-            // \App\Http\Middleware\HttpsProtocol::class
+            \App\Http\Middleware\HttpsProtocol::class
         ],
     ];
 
