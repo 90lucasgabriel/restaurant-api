@@ -23,12 +23,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 	
 	Route::group(['prefix' => 'company/{company_id}/', 'as' => 'company.'], function(){
 		Route::resource('branch', 				'Api\BranchController', 				['except'=>['create', 'edit', 'delete']]);
-		Route::resource('category', 			'Api\CategoryController', 			['except'=>['create', 'edit', 'delete']]);
-		
-		//Route::resource('product', 				'Api\ProductController', 				['except'=>['create', 'edit', 'delete']]);
-		Route::get('product/{id}',	['as'=>'company.product.show', 'uses'=>'Api\ProductController@show']);
-		Route::get('product', 			['as'=>'company.product', 'uses'=>'Api\ProductController@index']);
-		Route::post('product', 			['as'=>'company.product.store', 'uses'=>'Api\ProductController@store']);
+		Route::resource('category', 				'Api\CategoryController', 				['except'=>['create', 'edit', 'delete']]);
+		Route::resource('product', 				'Api\ProductController', 				['except'=>['create', 'edit', 'delete']]);
+
 
 		Route::resource('menu', 					'Api\MenuController', 					['except'=>['create', 'edit', 'delete']]);
 		Route::post(		'menu/{menu_id}/branch', 						['as'=>'menu.branch.sync', 		'uses'=>'Api\MenuController@syncBranch']);
