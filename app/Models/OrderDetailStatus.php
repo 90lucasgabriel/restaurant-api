@@ -7,14 +7,14 @@ use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
 /**
- * Class OrderStatus
+ * Class OrderDetailStatus
  * @package namespace App\Models;
  */
-class OrderStatus extends Model implements Transformable
+class OrderDetailStatus extends Model implements Transformable
 {
     use TransformableTrait;
     
-    protected $table='order_status';
+    protected $table='order_detail_status';
 
     /**
      * Fields to create new model mannualy.
@@ -32,5 +32,13 @@ class OrderStatus extends Model implements Transformable
      */
     public function order(){
         return $this->belongsTo(Order::class);
+    }
+
+    /**
+     * OrderDetail Relationship 1-1
+     * @return ['data'=>[App\Models\OrderDetail]]
+     */
+    public function orderDetail(){
+        return $this->belongsTo(OrderDetail::class);
     }
 }

@@ -108,6 +108,14 @@ $factory->define(App\Models\Company::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Models\Diningtable::class, function (Faker\Generator $faker) {
+    return [
+        'branch_id'         => rand(1,10),
+        'code'              => rand(1,50),
+        'description'       => $faker->text
+    ];
+});
+
 $factory->define(App\Models\Employee::class, function (Faker\Generator $faker) {
     return [
         'user_id'           => rand(1,20),
@@ -132,7 +140,9 @@ $factory->define(App\Models\Menu::class, function (Faker\Generator $faker) {
     return [
         'company_id'        => rand(1,20),
         'name'              => $faker->name,
-        'description'       => $faker->text
+        'description'       => $faker->text,
+        'price_person'      => rand(20,100),
+        'allow_alacarte'    => true
     ];
 });
 
@@ -164,14 +174,48 @@ $factory->define(App\Models\OauthClient::class, function (Faker\Generator $faker
 
 $factory->define(App\Models\Order::class, function (Faker\Generator $faker) {
     return [
-        'client_id'         => rand(1,10),
-        'total'             => rand(50, 50),
-        'status'            => 0
+        'company_id'        => rand(1,20),
+        'branch_id'         => rand(1,20),
+        'diningtable_id'    => rand(1,10),
+        'order_status_id'   => rand(1,3),
+        'total'             => rand(50, 300)
     ];
 });
 
-$factory->define(App\Models\OrderItem::class, function (Faker\Generator $faker) {
-    return [];
+$factory->define(App\Models\OrderStatus::class, function (Faker\Generator $faker) {
+    return [
+        'name'              => $faker->name,
+        'description'       => $faker->text
+    ];
+});
+
+$factory->define(App\Models\OrderDetail::class, function (Faker\Generator $faker) {
+    return [
+        'order_id'         => rand(1,10),
+        'menu_id'          => rand(1,10),
+        'product_id'       => rand(1,10),
+        'diningtable_id'   => rand(1,10),
+        'order_detail_status_id'  => rand(1,5),
+        'order_detail_type_id'    => rand(1,2),
+        'price_person'     => rand(30,90),
+        'price_alacarte'   => rand(15,100),
+        'quantity'         => rand(1,4),
+        'comment'          => $faker->text
+    ];
+});
+
+$factory->define(App\Models\OrderDetailStatus::class, function (Faker\Generator $faker) {
+    return [
+        'name'              => $faker->name,
+        'description'       => $faker->text
+    ];
+});
+
+$factory->define(App\Models\OrderDetailType::class, function (Faker\Generator $faker) {
+    return [
+        'name'              => $faker->name,
+        'description'       => $faker->text
+    ];
 });
 
 $factory->define(App\Models\Product::class, function (Faker\Generator $faker) {

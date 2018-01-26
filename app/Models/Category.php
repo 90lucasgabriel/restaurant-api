@@ -8,7 +8,6 @@ use Prettus\Repository\Traits\TransformableTrait;
 
 /**
  * Class Category
- * 
  * @package namespace App\Models;
  */
 class Category extends Model implements Transformable
@@ -17,7 +16,6 @@ class Category extends Model implements Transformable
 
     /**
      * Fields to create new model mannualy.
-     *
      * @var array
      */
     protected $fillable = [

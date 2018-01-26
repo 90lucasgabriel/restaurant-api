@@ -32,6 +32,10 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\CompanyRepositoryEloquent::class
         );
         $this->app->bind(
+            \App\Repositories\DiningtableRepository::class, 
+            \App\Repositories\DiningtableRepositoryEloquent::class
+        );
+        $this->app->bind(
             \App\Repositories\EmployeeRepository::class, 
             \App\Repositories\EmployeeRepositoryEloquent::class
         );
@@ -48,8 +52,20 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\OrderRepositoryEloquent::class
         );
         $this->app->bind(
-            \App\Repositories\OrderItemRepository::class, 
-            \App\Repositories\OrderItemRepositoryEloquent::class
+            \App\Repositories\OrderStatusRepository::class, 
+            \App\Repositories\OrderStatusRepositoryEloquent::class
+        );
+        $this->app->bind(
+            \App\Repositories\OrderDetailRepository::class, 
+            \App\Repositories\OrderDetailRepositoryEloquent::class
+        );
+        $this->app->bind(
+            \App\Repositories\OrderDetailTypeRepository::class, 
+            \App\Repositories\OrderDetailTypeRepositoryEloquent::class
+        );
+        $this->app->bind(
+            \App\Repositories\OrderDetailStatusRepository::class, 
+            \App\Repositories\OrderDetailStatusRepositoryEloquent::class
         );
         $this->app->bind(
             \App\Repositories\ProductRepository::class, 

@@ -23,7 +23,10 @@ class Menu extends Model implements Transformable
         'company_id',
         
         'name',
-        'description'
+        'description',
+
+        'price_person',
+        'allow_alacarte'
     ];
 
     /**

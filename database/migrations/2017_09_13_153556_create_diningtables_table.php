@@ -18,7 +18,7 @@ class CreateDiningTablesTable extends Migration
             $table->integer('branch_id')->unsigned();
             
             $table->string('code');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->timestamps();
 
             $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');

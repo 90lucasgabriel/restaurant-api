@@ -6,16 +6,16 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Presenters\OrderPresenter;
-use App\Repositories\OrderRepository;
-use App\Models\Order;
-use App\Validators\OrderValidator;
+use App\Presenters\DiningtablePresenter;
+use App\Repositories\DiningtableRepository;
+use App\Models\Diningtable;
+use App\Validators\DiningtableValidator;
 
 /**
- * Class OrderRepositoryEloquent
+ * Class DiningtableRepositoryEloquent
  * @package namespace App\Repositories;
  */
-class OrderRepositoryEloquent extends BaseRepository implements OrderRepository
+class DiningtableRepositoryEloquent extends BaseRepository implements DiningtableRepository
 {
     /**
      * Verify if skip Presenter
@@ -26,12 +26,9 @@ class OrderRepositoryEloquent extends BaseRepository implements OrderRepository
 
     protected $fieldSearchable = [
         'id',
-        'company_id',
         'branch_id',
-        'diningtable_id',
-        'status',
-
-        'total'
+        'code',
+        'description'
     ];
 
     /**
@@ -41,7 +38,7 @@ class OrderRepositoryEloquent extends BaseRepository implements OrderRepository
      */
     public function model()
     {
-        return Order::class;
+        return Diningtable::class;
     }   
 
     /**
@@ -53,6 +50,6 @@ class OrderRepositoryEloquent extends BaseRepository implements OrderRepository
     }
 
     public function presenter(){
-        return OrderPresenter::class;
+        return DiningtablePresenter::class;
     }
 }

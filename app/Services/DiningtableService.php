@@ -2,27 +2,27 @@
 namespace App\Services;
 
 use App\Http\Requests;
-use App\Repositories\OrderRepository;
-use App\Models\Order;
+use App\Repositories\DiningtableRepository;
+use App\Models\Diningtable;
 
 /**
- * Class OrderService
+ * Class DiningtableService
  * 
  * @package namespace App\Services;
  */
-class OrderService{
+class DiningtableService{
     /**
      * Repository of specified resource.
-     * @var OrderRepository
+     * @var DiningtableRepository
      */
     private $repository;
 
     /**
      * Constructor
-     * @param OrderRepository $repository
+     * @param DiningtableRepository $repository
      */
     public function __construct(
-        OrderRepository   $repository
+        DiningtableRepository   $repository
     ){
         $this->repository = $repository;
     }
@@ -38,7 +38,7 @@ class OrderService{
             ->repository
             ->scopeQuery(function($query) use($company_id, $branch_id){                
                 $result = $query
-                    ->where('company_id', '=', $company_id)
+                    //->where('company_id', '=', $company_id)
                     ->where('branch_id',  '=', $branch_id);
                 return $result;
             });
@@ -56,13 +56,13 @@ class OrderService{
      * Display a specific item of the resource.
      * @param int $company_id
      * @param int $id
-     * @return ['data'=>[App\Models\Order], 'meta'=>[pagination]]
+     * @return ['data'=>[App\Models\Diningtable], 'meta'=>[pagination]]
      */
     public function find(int $company_id, int $branch_id, int $id){
         $item = $this
             ->repository
             ->findWhere([
-                'company_id' => $company_id,
+                //'company_id' => $company_id,
                 'branch_id'  => $branch_id,
                 'id'         => $id,
             ])['data'][0];

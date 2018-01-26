@@ -4,15 +4,15 @@ namespace App\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\OrderItemRepository;
-use App\Models\OrderItem;
-use App\Validators\OrderItemValidator;
+use App\Repositories\OrderDetailRepository;
+use App\Models\OrderDetail;
+use App\Validators\OrderDetailValidator;
 
 /**
- * Class OrderItemRepositoryEloquent
+ * Class OrderDetailRepositoryEloquent
  * @package namespace App\Repositories;
  */
-class OrderItemRepositoryEloquent extends BaseRepository implements OrderItemRepository
+class OrderDetailRepositoryEloquent extends BaseRepository implements OrderDetailRepository
 {
     /**
      * Specify Model class name
@@ -21,7 +21,7 @@ class OrderItemRepositoryEloquent extends BaseRepository implements OrderItemRep
      */
     public function model()
     {
-        return OrderItem::class;
+        return OrderDetail::class;
     }
 
     

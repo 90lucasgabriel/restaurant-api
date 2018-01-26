@@ -36,10 +36,12 @@ class MenuTransformer extends TransformerAbstract
     public function transform(Menu $model)
     {
         $menu = [
-            'id'            => (int) $model->id,
-            'company_id'    => (int) $model->company_id,
-            'name'          => $model->name,
-            'description'   => $model->description
+            'id'                => (int) $model->id,
+            'company_id'        => (int) $model->company_id,
+            'name'              => $model->name,
+            'description'       => $model->description,
+            'price_person'      => $model->price_person,
+            'allow_alacarte'    => $model->allow_alacarte
         ];
 
         if (isset($model->pivot->price)) {

@@ -23,7 +23,9 @@ class MenuTableSeeder extends Seeder
             'id'                => '1',
             'company_id'        => '1',
             'name'              => 'Almoço',
-            'description'       => 'Cardápio de almoço.'
+            'description'       => 'Cardápio de almoço.',
+            'price_person'      => 35,
+            'allow_alacarte'    => true
         ]);
 
         for($i=0; $i<30; $i++){

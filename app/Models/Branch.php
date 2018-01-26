@@ -59,4 +59,13 @@ class Branch extends Model implements Transformable
     public function menus(){
         return $this->belongsToMany(Menu::class)->withTimestamps();
     }
+
+    /**
+     * Diningtable Relationship 1-n
+     *
+     * @return ['data'=>[App\Models\Diningtable]]
+     */
+    public function diningtables(){
+        return $this->belongsToMany(Diningtable::class)->withTimestamps();
+    }
 }

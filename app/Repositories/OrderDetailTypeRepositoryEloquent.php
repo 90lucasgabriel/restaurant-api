@@ -6,42 +6,36 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Presenters\OrderPresenter;
-use App\Repositories\OrderRepository;
-use App\Models\Order;
-use App\Validators\OrderValidator;
+use App\Presenters\OrderDetailTypePresenter;
+use App\Repositories\OrderDetailTypeRepository;
+use App\Models\OrderDetailType;
+use App\Validators\OrderDetailTypeValidator;
 
 /**
- * Class OrderRepositoryEloquent
+ * Class OrderDetailTypeRepositoryEloquent
  * @package namespace App\Repositories;
  */
-class OrderRepositoryEloquent extends BaseRepository implements OrderRepository
+class OrderDetailTypeRepositoryEloquent extends BaseRepository implements OrderDetailTypeRepository
 {
     /**
      * Verify if skip Presenter
-     *
      * @var boolean
      */
     protected $skipPresenter = false;
 
     protected $fieldSearchable = [
         'id',
-        'company_id',
-        'branch_id',
-        'diningtable_id',
-        'status',
-
-        'total'
+        'name'          => 'like',
+        'description'   => 'like'
     ];
 
     /**
      * Specify Model class name
-     *
      * @return string
      */
     public function model()
     {
-        return Order::class;
+        return OrderDetailType::class;
     }   
 
     /**
@@ -53,6 +47,6 @@ class OrderRepositoryEloquent extends BaseRepository implements OrderRepository
     }
 
     public function presenter(){
-        return OrderPresenter::class;
+        return OrderDetailTypePresenter::class;
     }
 }

@@ -17,7 +17,6 @@ class Product extends Model implements Transformable
 
     /**
      * Fields to create new model mannualy.
-     *
      * @var array
      */
     protected $fillable = [
@@ -31,7 +30,6 @@ class Product extends Model implements Transformable
 
     /**
      * Parent Company Relationship 1->1
-     *
      * @return ['data'=>[App\Models\Company]]
      */
     public function company(){
@@ -40,7 +38,6 @@ class Product extends Model implements Transformable
     
     /**
      * Category Relationship 1-1
-     *
      * @return ['data'=>[App\Models\Category]]
      */
     public function category(){
@@ -48,8 +45,7 @@ class Product extends Model implements Transformable
     }
      
     /**
-     * Menu Relationship 1-n
-     *
+     * Menu Relationship n-n
      * @return ['data'=>[App\Models\Menu]]
      */
     public function menu(){

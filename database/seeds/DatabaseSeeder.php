@@ -21,7 +21,12 @@ class DatabaseSeeder extends Seeder
         $this->call(ProductTableSeeder::class);
         $this->call(MenuTableSeeder::class);
         //$this->call(CouponTableSeeder::class);
-        //$this->call(OrderTableSeeder::class);
+        $this->call(DiningtableTableSeeder::class);
+        $this->call(OrderStatusTableSeeder::class);
+        $this->call(OrderTableSeeder::class);
+        $this->call(OrderDetailStatusTableSeeder::class);
+        $this->call(OrderDetailTypeTableSeeder::class);
+        $this->call(OrderDetailTableSeeder::class);
         $this->call(OauthClientTableSeeder::class);
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         Model::reguard();

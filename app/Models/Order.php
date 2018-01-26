@@ -11,17 +11,50 @@ class Order extends Model implements Transformable
     use TransformableTrait;
 
     protected $fillable = [
+        'company_id',
+        'branch_id',
         'diningtable_id',
+        'order_status_id',
         'total', 
-        'status',
     ];
 
     /**
+     * Company Relationship 1-1
+     * @return void
+     */
+    public function company(){
+        return $this->belongsTo(Company::class);
+    }
+
+    /**
+     * Branch Relationship 1-1
+     * @return void
+     */
+    public function branch(){
+        return $this->belongsTo(Branch::class);
+    }
+
+    /**
      * Diningtable Relationship 1-1
-     *
      * @return void
      */
     public function diningtable(){
         return $this->belongsTo(Diningtable::class);
+    }
+        
+    /**
+     * OrderStatus Relationship 1-1
+     * @return void
+     */
+    public function orderStatus(){
+        return $this->belongsTo(OrderStatus::class);
+    }
+
+    /**
+     * OrderDetail Relationship 1-n
+     * @return ['data'=>[App\Models\OrderDetail]]
+     */
+    public function orderDetail(){
+        return $this->hasMany(OrderDetail::class);
     }
 }
