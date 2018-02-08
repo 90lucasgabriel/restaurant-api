@@ -43,9 +43,9 @@ class OrderDetailController extends Controller{
      * @param int $company_id
      * @return ['data'=>[App\Models\Order], 'meta'=>[pagination]]
      */
-    public function index(Request $request, int $company_id, int $branch_id, int $order_id){
+    public function index(Request $request, int $company_id, int $branch_id/*, int $order_id*/){
         $data               = $request->all();
-        $items              = $this->service->query($data, $company_id, $branch_id, $order_id);
+        $items              = $this->service->index($data, $company_id, $branch_id/*, $order_id*/);
 
         return $items;
     }
