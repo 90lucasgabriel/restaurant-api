@@ -3,34 +3,34 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\OrderDetailTypeRepository;
-use App\Services\OrderDetailTypeService;
-use App\Models\OrderDetailType;
+use App\Repositories\OrderItemTypeRepository;
+use App\Services\OrderItemTypeService;
+use App\Models\OrderItemType;
 
 /**
- * Class OrderDetailTypeController
+ * Class OrderItemTypeController
  * @package namespace App\Http\Controllers\Api;
  */
-class OrderDetailTypeController extends Controller{    
+class OrderItemTypeController extends Controller{    
     /**
      * Repository of specified resource.
-     * @var OrderDetailTypeRepository
+     * @var OrderItemTypeRepository
      */
     private $repository;
 
     /**
      * Service of specified resource.
-     * @var OrderDetailTypeService
+     * @var OrderItemTypeService
      */
     private $service;
 
     /**
      * Constructor
-     * @param OrderDetailTypeRepository $repository
+     * @param OrderItemTypeRepository $repository
      */
     public function __construct(
-        OrderDetailTypeRepository      $repository,
-        OrderDetailTypeService         $service
+        OrderItemTypeRepository      $repository,
+        OrderItemTypeService         $service
     ){
         $this->repository   =   $repository;
         $this->service      =   $service;
@@ -39,7 +39,7 @@ class OrderDetailTypeController extends Controller{
     /**
      * Display a listing of the resource.
      * @param Request $request
-     * @return ['data'=>[App\Models\OrderDetailType], 'meta'=>[pagination]]
+     * @return ['data'=>[App\Models\OrderItemType], 'meta'=>[pagination]]
      */
     public function index(Request $request){
         $data               = $request->all();
@@ -51,7 +51,7 @@ class OrderDetailTypeController extends Controller{
     /**
      * Display the specified resource.
      * @param  int  $id
-     * @return ['data'=>[App\Models\OrderDetailType]]
+     * @return ['data'=>[App\Models\OrderItemType]]
      */
     public function show(int $id){
         $item       = $this->service->find($id);
@@ -62,7 +62,7 @@ class OrderDetailTypeController extends Controller{
     /**
      * Create new item of specified resource
      * @param Request $request
-     * @return ['data'=>[App\Models\OrderDetailType]]
+     * @return ['data'=>[App\Models\OrderItemType]]
      */
     public function store(Request $request){
         $data       = $request->all();
@@ -75,7 +75,7 @@ class OrderDetailTypeController extends Controller{
      * Update item of specified resource
      * @param Request $request
      * @param int $id
-     * @return ['data'=>[App\Models\OrderDetailType]]
+     * @return ['data'=>[App\Models\OrderItemType]]
      */
     public function update(Request $request, int $id){
         $data       = $request->all();

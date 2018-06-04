@@ -3,13 +3,13 @@
 namespace App\Transformers;
 
 use League\Fractal\TransformerAbstract;
-use App\Models\OrderDetail;
+use App\Models\OrderItem;
 
 /**
- * Class OrderDetailTransformer
+ * Class OrderItemTransformer
  * @package namespace App\Transformers;
  */
-class OrderDetailTransformer extends TransformerAbstract
+class OrderItemTransformer extends TransformerAbstract
 {
     /**
      * Default models includes
@@ -21,14 +21,14 @@ class OrderDetailTransformer extends TransformerAbstract
      * Available models includes
      * @var array
      */
-    protected $availableIncludes = ['diningtable','product', 'orderDetailType', 'orderDetailStatus', 'menu'];
+    protected $availableIncludes = ['diningtable','product', 'orderItemType', 'orderItemStatus', 'menu'];
 
     /**
-     * Transform the \OrderDetail entity
-     * @param \OrderDetail $model
+     * Transform the \OrderItem entity
+     * @param \OrderItem $model
      * @return array
      */
-    public function transform(OrderDetail $model)
+    public function transform(OrderItem $model)
     {
         return [
             'id'              => (int) $model->id,
@@ -36,8 +36,8 @@ class OrderDetailTransformer extends TransformerAbstract
             'menu_id'         => (int) $model->menu_id,
             'product_id'      => (int) $model->product_id,
             'diningtable_id'  => (int) $model->diningtable_id,
-            'order_detail_status_id' => (int) $model->order_detail_status_id,
-            'order_detail_type_id'   => (int) $model->order_detail_type_id,
+            'order_item_status_id' => (int) $model->order_item_status_id,
+            'order_item_type_id'   => (int) $model->order_item_type_id,
             
             'price_person'    => $model->price_person,
             'price_alacarte'  => $model->price_alacarte,
@@ -49,56 +49,56 @@ class OrderDetailTransformer extends TransformerAbstract
         ];
     }
     /**
-     * Includes detail information.
-     * @param OrderDetail $model
+     * Includes item information.
+     * @param OrderItem $model
      * @return \League\Fractal\Resource\Item
      */
-    public function includeProduct(OrderDetail $model){
+    public function includeProduct(OrderItem $model){
         return $this->item($model->product, new ProductTransformer());
     }
 
     /**
      * Includes diningtable information.
-     * @param OrderDetail $model
+     * @param OrderItem $model
      * @return \League\Fractal\Resource\Item
      */
-    public function includeDiningtable(OrderDetail $model){
+    public function includeDiningtable(OrderItem $model){
         return $this->item($model->diningtable, new DiningtableTransformer());
     }
 
     /**
      * Includes order information.
-     * @param OrderDetail $model
+     * @param OrderItem $model
      * @return \League\Fractal\Resource\Item
      */
-    public function includeOrder(OrderDetail $model){
+    public function includeOrder(OrderItem $model){
         return $this->item($model->order, new OrderTransformer());
     }
     
     /**
      * Includes menu information.
-     * @param OrderDetail $model
+     * @param OrderItem $model
      * @return \League\Fractal\Resource\Item
      */
-    public function includeMenu(OrderDetail $model){
+    public function includeMenu(OrderItem $model){
         return $this->item($model->menu, new MenuTransformer());
     }
     
     /**
      * Includes status information.
-     * @param OrderDetail $model
+     * @param OrderItem $model
      * @return \League\Fractal\Resource\Item
      */
-    public function includeOrderDetailStatus(OrderDetail $model){
-        return $this->item($model->orderDetailStatus, new OrderDetailStatusTransformer());
+    public function includeOrderItemStatus(OrderItem $model){
+        return $this->item($model->orderItemStatus, new OrderItemStatusTransformer());
     }
         
     /**
      * Includes type information.
-     * @param OrderDetail $model
+     * @param OrderItem $model
      * @return \League\Fractal\Resource\Item
      */
-    public function includeOrderDetailType(OrderDetail $model){
-        return $this->item($model->orderDetailType, new OrderDetailTypeTransformer());
+    public function includeOrderItemType(OrderItem $model){
+        return $this->item($model->orderItemType, new OrderItemTypeTransformer());
     } 
 }

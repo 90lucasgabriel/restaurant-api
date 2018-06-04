@@ -6,16 +6,16 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Presenters\OrderDetailTypePresenter;
-use App\Repositories\OrderDetailTypeRepository;
-use App\Models\OrderDetailType;
-use App\Validators\OrderDetailTypeValidator;
+use App\Presenters\OrderItemTypePresenter;
+use App\Repositories\OrderItemTypeRepository;
+use App\Models\OrderItemType;
+use App\Validators\OrderItemTypeValidator;
 
 /**
- * Class OrderDetailTypeRepositoryEloquent
+ * Class OrderItemTypeRepositoryEloquent
  * @package namespace App\Repositories;
  */
-class OrderDetailTypeRepositoryEloquent extends BaseRepository implements OrderDetailTypeRepository
+class OrderItemTypeRepositoryEloquent extends BaseRepository implements OrderItemTypeRepository
 {
     /**
      * Verify if skip Presenter
@@ -35,7 +35,7 @@ class OrderDetailTypeRepositoryEloquent extends BaseRepository implements OrderD
      */
     public function model()
     {
-        return OrderDetailType::class;
+        return OrderItemType::class;
     }   
 
     /**
@@ -47,6 +47,6 @@ class OrderDetailTypeRepositoryEloquent extends BaseRepository implements OrderD
     }
 
     public function presenter(){
-        return OrderDetailTypePresenter::class;
+        return OrderItemTypePresenter::class;
     }
 }

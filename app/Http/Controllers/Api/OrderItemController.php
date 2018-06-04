@@ -3,35 +3,35 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\OrderDetailRepository;
-use App\Services\OrderDetailService;
-use App\Models\OrderDetail;
+use App\Repositories\OrderItemRepository;
+use App\Services\OrderItemService;
+use App\Models\OrderItem;
 
 /**
- * Class OrderDetailController
+ * Class OrderItemController
  * 
  * @package namespace App\Http\Controllers\Api;
  */
-class OrderDetailController extends Controller{    
+class OrderItemController extends Controller{    
     /**
      * Repository of specified resource.
-     * @var OrderDetailRepository
+     * @var OrderItemRepository
      */
     private $repository;
 
     /**
      * Service of specified resource.
-     * @var OrderDetailService
+     * @var OrderItemService
      */
     private $service;
 
     /**
      * Constructor
-     * @param OrderDetailRepository $repository
+     * @param OrderItemRepository $repository
      */
     public function __construct(
-        OrderDetailRepository      $repository,
-        OrderDetailService         $service
+        OrderItemRepository      $repository,
+        OrderItemService         $service
     ){
         $this->repository   =   $repository;
         $this->service      =   $service;
@@ -68,7 +68,7 @@ class OrderDetailController extends Controller{
      * Display the specified resource.
      * @param  int  $company_id
      * @param  int  $id
-     * @return ['data'=>[App\Models\OrderDetail]]
+     * @return ['data'=>[App\Models\OrderItem]]
      */
     public function show(int $company_id, int $id){
         $item       = $this->service->find($company_id, $id);
@@ -79,7 +79,7 @@ class OrderDetailController extends Controller{
     /**
      * Create new item of specified resource
      * @param Request $request
-     * @return ['data'=>[App\Models\OrderDetail]]
+     * @return ['data'=>[App\Models\OrderItem]]
      */
     public function store(Request $request){
         $data       = $request->all();
@@ -93,7 +93,7 @@ class OrderDetailController extends Controller{
      * @param Request $request
      * @param int $company_id
      * @param int $id
-     * @return ['data'=>[App\Models\OrderDetail]]
+     * @return ['data'=>[App\Models\OrderItem]]
      */
     public function update(Request $request, int $company_id, int $id){
         $data       = $request->all();

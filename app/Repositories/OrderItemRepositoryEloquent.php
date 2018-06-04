@@ -4,15 +4,15 @@ namespace App\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\OrderDetailRepository;
-use App\Presenters\OrderDetailPresenter;
-use App\Models\OrderDetail;
+use App\Repositories\OrderItemRepository;
+use App\Presenters\OrderItemPresenter;
+use App\Models\OrderItem;
 
 /**
- * Class OrderDetailRepositoryEloquent
+ * Class OrderItemRepositoryEloquent
  * @package namespace App\Repositories;
  */
-class OrderDetailRepositoryEloquent extends BaseRepository implements OrderDetailRepository
+class OrderItemRepositoryEloquent extends BaseRepository implements OrderItemRepository
 {
     /**
      * Verify if skip Presenter
@@ -26,8 +26,8 @@ class OrderDetailRepositoryEloquent extends BaseRepository implements OrderDetai
         'menu_id',
         'product_id',
         'diningtable_id',
-        'order_detail_status_id',
-        'order_detail_type_id',
+        'order_item_status_id',
+        'order_item_type_id',
         
         'price_person',
         'price_alacarte',
@@ -42,7 +42,7 @@ class OrderDetailRepositoryEloquent extends BaseRepository implements OrderDetai
      */
     public function model()
     {
-        return OrderDetail::class;
+        return OrderItem::class;
     }
 
     /**
@@ -71,6 +71,6 @@ class OrderDetailRepositoryEloquent extends BaseRepository implements OrderDetai
      * @return void
      */
     public function presenter(){
-        return OrderDetailPresenter::class;
+        return OrderItemPresenter::class;
     }
 }

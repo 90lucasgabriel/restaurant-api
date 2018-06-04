@@ -25,6 +25,7 @@
     },
     "autoload": {
         "classmap": [
+            "database/migrations",
             "database/seeds",
             "database/factories"
         ],

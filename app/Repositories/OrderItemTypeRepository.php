@@ -3,7 +3,7 @@ namespace App\Repositories;
 
 use Prettus\Repository\Contracts\RepositoryInterface;
 
-interface OrderDetailTypeRepository extends RepositoryInterface
+interface OrderItemTypeRepository extends RepositoryInterface
 {
     
 }

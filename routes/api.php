@@ -19,9 +19,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 //Route::group(['middleware' => 'cors'], function(){
 	// PARAMETERS 
-	Route::resource('order-status', 				'Api\OrderStatusController', 				['except'=>['create', 'edit', 'delete']]);
-	Route::resource('order-detail-status',	'Api\OrderDetailStatusController',	['except'=>['create', 'edit', 'delete']]);
-	Route::resource('order-detail-type',		'Api\OrderDetailTypeController',		['except'=>['create', 'edit', 'delete']]);
+	Route::resource('order-status', 				'Api\OrderStatusController', 		  ['except'=>['create', 'edit', 'delete']]);
+	Route::resource('order-item-status',		'Api\OrderItemStatusController',	['except'=>['create', 'edit', 'delete']]);
+	Route::resource('order-item-type',			'Api\OrderItemTypeController',		['except'=>['create', 'edit', 'delete']]);
 		
 	// COMPANY
 	Route::group(['prefix' => 'company/{company_id}/', 'as' => 'company.'], function(){
@@ -31,9 +31,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 			
 			// COMPANY/BRANCH/ORDER
 			Route::group(['prefix' => 'order/{order_id}/', 'as' => 'company.branch.order'], function(){
-			 	Route::resource('detail', 						'Api\OrderDetailController', 			 	['except'=>['create', 'edit', 'delete']]);
+			 	Route::resource('item', 						'Api\OrderItemController', 			 	['except'=>['create', 'edit', 'delete']]);
 			});
-			Route::get(		'order-detail', 					['as'=>'order-detail.byBranch',			'uses'=>'Api\OrderDetailController@queryByBranch']);
+			Route::get(		'order-item', 					['as'=>'order-item.byBranch',			'uses'=>'Api\OrderItemController@queryByBranch']);
 			
 			Route::resource('diningtable',  				'Api\DiningtableController', 				['except'=>['create', 'edit', 'delete']]);
 			Route::resource('order', 			  				'Api\OrderController', 			 				['except'=>['create', 'edit', 'delete']]);

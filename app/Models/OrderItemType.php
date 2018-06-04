@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
-class OrderDetailType extends Model implements Transformable
+class OrderItemType extends Model implements Transformable
 {
     use TransformableTrait;
 
@@ -21,10 +21,10 @@ class OrderDetailType extends Model implements Transformable
     ];
 
     /**
-     * OrderDetail Relationship 1->1
+     * OrderItem Relationship 1->1
      * @return ['data'=>[App\Models\Company]]
      */
-    public function orderDetail(){
-        return $this->belongsTo(OrderDetail::class);
+    public function orderItem(){
+        return $this->belongsTo(OrderItem::class);
     }
 }

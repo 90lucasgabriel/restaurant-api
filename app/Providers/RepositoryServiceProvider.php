@@ -56,16 +56,16 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\OrderStatusRepositoryEloquent::class
         );
         $this->app->bind(
-            \App\Repositories\OrderDetailRepository::class, 
-            \App\Repositories\OrderDetailRepositoryEloquent::class
+            \App\Repositories\OrderItemRepository::class, 
+            \App\Repositories\OrderItemRepositoryEloquent::class
         );
         $this->app->bind(
-            \App\Repositories\OrderDetailTypeRepository::class, 
-            \App\Repositories\OrderDetailTypeRepositoryEloquent::class
+            \App\Repositories\OrderItemTypeRepository::class, 
+            \App\Repositories\OrderItemTypeRepositoryEloquent::class
         );
         $this->app->bind(
-            \App\Repositories\OrderDetailStatusRepository::class, 
-            \App\Repositories\OrderDetailStatusRepositoryEloquent::class
+            \App\Repositories\OrderItemStatusRepository::class, 
+            \App\Repositories\OrderItemStatusRepositoryEloquent::class
         );
         $this->app->bind(
             \App\Repositories\ProductRepository::class, 

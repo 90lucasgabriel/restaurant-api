@@ -3,14 +3,14 @@
 namespace App\Transformers;
 
 use League\Fractal\TransformerAbstract;
-use App\Models\OrderDetailStatus;
+use App\Models\OrderItemStatus;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
- * Class OrderDetailStatusTransformer
+ * Class OrderItemStatusTransformer
  * @package namespace App\Transformers;
  */
-class OrderDetailStatusTransformer extends TransformerAbstract
+class OrderItemStatusTransformer extends TransformerAbstract
 {
     /**
      * Default models includes
@@ -22,15 +22,15 @@ class OrderDetailStatusTransformer extends TransformerAbstract
      * Available models includes
      * @var array
      */
-    protected $availableIncludes    = ['order', 'detail'];
+    protected $availableIncludes    = ['order', 'item'];
     
     /**
-     * Transform the \OrderDetailStatus entity
-     * @param \OrderDetailStatus $model
+     * Transform the \OrderItemStatus entity
+     * @param \OrderItemStatus $model
      *
      * @return array
      */
-    public function transform(OrderDetailStatus $model)
+    public function transform(OrderItemStatus $model)
     {
         return [
             'id'            => (int) $model->id,
@@ -44,16 +44,16 @@ class OrderDetailStatusTransformer extends TransformerAbstract
      * @param Order $model
      * @return ['data'=>[App\Models\Order]]
      */
-    public function includeOrder(OrderDetailStatus $model){
+    public function includeOrder(OrderItemStatus $model){
         return $this->item($model->order, new OrderTransformer());  
     }
 
     /**
-     * Includes OrderDetail information
-     * @param OrderDetail $model
-     * @return ['data'=>[App\Models\OrderDetail]]
+     * Includes OrderItem information
+     * @param OrderItem $model
+     * @return ['data'=>[App\Models\OrderItem]]
      */
-    public function includeDetail(OrderDetailStatus $model){
-        return $this->item($model->orderDetail, new OrderDetailTransformer());
+    public function includeItem(OrderItemStatus $model){
+        return $this->item($model->orderItem, new OrderItemTransformer());
     }
 }

@@ -2,10 +2,10 @@
 namespace App\Transformers;
 
 use League\Fractal\TransformerAbstract;
-use App\Models\OrderDetailType;
+use App\Models\OrderItemType;
 use Illuminate\Database\Eloquent\Collection;
 
-class OrderDetailTypeTransformer extends TransformerAbstract
+class OrderItemTypeTransformer extends TransformerAbstract
 {
     /**
      * Default models includes
@@ -17,8 +17,8 @@ class OrderDetailTypeTransformer extends TransformerAbstract
      * Available models includes
      * @var array
      */
-    protected $availableIncludes = ['detail'];
-    public function transform(OrderDetailType $model)
+    protected $availableIncludes = ['item'];
+    public function transform(OrderItemType $model)
     {
         return [
             'id'              => (int) $model->id,
@@ -29,10 +29,10 @@ class OrderDetailTypeTransformer extends TransformerAbstract
 
     /**
      * Includes order information.
-     * @param OrderDetailType $model
+     * @param OrderItemType $model
      * @return \League\Fractal\Resource\Item
      */
-    public function includeDetail(OrderDetailType $model){
-        return $this->collection($model->detail, new OrderDetailTransformer());
+    public function includeItem(OrderItemType $model){
+        return $this->collection($model->detail, new OrderItemTransformer());
     }
 }

@@ -1,12 +1,12 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\OrderDetailType;
+use App\Models\OrderItemType;
 
 /**
- * Class OrderDetailTypeTableSeeder
+ * Class OrderItemTypeTableSeeder
  */
-class OrderDetailTypeTableSeeder extends Seeder
+class OrderItemTypeTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,14 +15,14 @@ class OrderDetailTypeTableSeeder extends Seeder
      */
     public function run()
     {
-        OrderDetailType::truncate();
+        OrderItemType::truncate();
 
-        factory(OrderDetailType::class)->create([
+        factory(OrderItemType::class)->create([
             'id'          => 1,
             'name'        => 'Rodízio',
             'description' => 'Refeição à vontade. O valor do pedido é cobrado por pessoa.'
         ]);
-        factory(OrderDetailType::class)->create([
+        factory(OrderItemType::class)->create([
             'id'          => 2,
             'name'        => 'A la carte',
             'description' => 'Refeição cobrada por quantidade pedida.'

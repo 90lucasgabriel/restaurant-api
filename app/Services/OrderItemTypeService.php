@@ -2,29 +2,29 @@
 namespace App\Services;
 
 use App\Http\Requests;
-use App\Repositories\OrderDetailTypeRepository;
-use App\Models\OrderDetailType;
+use App\Repositories\OrderItemTypeRepository;
+use App\Models\OrderItemType;
 
 /**
- * Class OrderDetailTypeService
+ * Class OrderItemTypeService
  * 
  * @package namespace App\Services;
  */
-class OrderDetailTypeService{
+class OrderItemTypeService{
     /**
      * Repository of specified resource.
      *
-     * @var OrderDetailTypeRepository
+     * @var OrderItemTypeRepository
      */
     private $repository;
 
     /**
      * Constructor
      *
-     * @param OrderDetailTypeRepository $repository
+     * @param OrderItemTypeRepository $repository
      */
     public function __construct(
-        OrderDetailTypeRepository   $repository
+        OrderItemTypeRepository   $repository
     ){
         $this->repository = $repository;
     }
@@ -47,7 +47,7 @@ class OrderDetailTypeService{
     /**
      * Display a specific item of the resource.
      * @param int $id
-     * @return ['data'=>[App\Models\OrderDetailType], 'meta'=>[pagination]]
+     * @return ['data'=>[App\Models\OrderItemType], 'meta'=>[pagination]]
      */
     public function find(int $id){
         $item = $this->repository->find($id);

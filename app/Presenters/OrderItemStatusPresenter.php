@@ -2,14 +2,14 @@
 
 namespace App\Presenters;
 
-use App\Transformers\OrderDetailStatusTransformer;
+use App\Transformers\OrderItemStatusTransformer;
 use Prettus\Repository\Presenter\FractalPresenter;
 
 /**
- * Class OrderDetailStatusPresenter
+ * Class OrderItemStatusPresenter
  * @package namespace App\Presenters;
  */
-class OrderDetailStatusPresenter extends FractalPresenter
+class OrderItemStatusPresenter extends FractalPresenter
 {
     /**
      * Transformer
@@ -17,6 +17,6 @@ class OrderDetailStatusPresenter extends FractalPresenter
      */
     public function getTransformer()
     {
-        return new OrderDetailStatusTransformer();
+        return new OrderItemStatusTransformer();
     }
 }

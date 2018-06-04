@@ -51,10 +51,10 @@ class Order extends Model implements Transformable
     }
 
     /**
-     * OrderDetail Relationship 1-n
-     * @return ['data'=>[App\Models\OrderDetail]]
+     * OrderItem Relationship 1-n
+     * @return ['data'=>[App\Models\OrderItem]]
      */
-    public function orderDetail(){
-        return $this->hasMany(OrderDetail::class);
+    public function orderItem(){
+        return $this->hasMany(OrderItem::class);
     }
 }

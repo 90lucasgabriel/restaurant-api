@@ -1,18 +1,18 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\OrderDetail;
+use App\Models\OrderItem;
 use App\Models\Order;
 use App\Models\Menu;
 use App\Models\Product;
 use App\Models\Diningtable;
-use App\Models\OrderDetailStatus;
-use App\Models\OrderDetailType;
+use App\Models\OrderItemStatus;
+use App\Models\OrderItemType;
 
 /**
- * Class OrderDetailTableSeeder
+ * Class OrderItemTableSeeder
  */
-class OrderDetailTableSeeder extends Seeder
+class OrderItemTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -20,22 +20,22 @@ class OrderDetailTableSeeder extends Seeder
      */
     public function run()
     {
-        OrderDetail::truncate();
+        OrderItem::truncate();
         $order_ids        = Order::pluck('id');
         $menu_ids         = Menu::pluck('id');
         $product_ids      = Product::pluck('id');
         $diningtable_ids  = Diningtable::pluck('id');
-        $order_detail_status_ids = OrderDetailStatus::pluck('id');
-        $order_detail_type_ids   = OrderDetailType::pluck('id');
+        $order_item_status_ids = OrderItemStatus::pluck('id');
+        $order_item_type_ids   = OrderItemType::pluck('id');
 
         for($i=0; $i<500; $i++){
-            factory(OrderDetail::class)->create([
+            factory(OrderItem::class)->create([
                 'order_id'        => $order_ids->random(),
                 'menu_id'         => $menu_ids->random(),
                 'product_id'      => $product_ids->random(),
                 'diningtable_id'  => $diningtable_ids->random(),
-                'order_detail_status_id' => $order_detail_status_ids->random(),
-                'order_detail_type_id'   => $order_detail_type_ids->random()
+                'order_item_status_id' => $order_item_status_ids->random(),
+                'order_item_type_id'   => $order_item_type_ids->random()
             ]);
         }
     }

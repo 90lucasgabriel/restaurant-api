@@ -17,7 +17,7 @@ class OrderTransformer extends TransformerAbstract
      * Available models includes
      * @var array
      */
-    protected $availableIncludes = ['company', 'branch', 'diningtable', 'coupon', 'orderStatus', 'orderDetail'];
+    protected $availableIncludes = ['company', 'branch', 'diningtable', 'coupon', 'orderStatus', 'orderItem'];
     public function transform(Order $model)
     {
         return [
@@ -43,7 +43,7 @@ class OrderTransformer extends TransformerAbstract
     }
 
     public function includStatus(Order $model){
-        return $this->item($model-status, new OrderDetailStatusTransformer());
+        return $this->item($model-status, new OrderItemStatusTransformer());
     }
 
     public function includeDiningtable(Order $model){
@@ -61,8 +61,8 @@ class OrderTransformer extends TransformerAbstract
         return $this->item($model->orderStatus, new OrderStatusTransformer());
     }
 
-    public function includeOrderDetail(Order $model){
-        return $this->collection($model->orderDetail, new OrderDetailTransformer());
+    public function includeOrderItem(Order $model){
+        return $this->collection($model->orderItem, new OrderItemTransformer());
     }
 
 

@@ -4,15 +4,15 @@ namespace App\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\OrderDetailStatusRepository;
-use App\Presenters\OrderDetailStatusPresenter;
-use App\Models\OrderDetailStatus;
+use App\Repositories\OrderItemStatusRepository;
+use App\Presenters\OrderItemStatusPresenter;
+use App\Models\OrderItemStatus;
 
 /**
- * Class OrderDetailStatusRepositoryEloquent
+ * Class OrderItemStatusRepositoryEloquent
  * @package namespace App\Repositories;
  */
-class OrderDetailStatusRepositoryEloquent extends BaseRepository implements OrderDetailStatusRepository
+class OrderItemStatusRepositoryEloquent extends BaseRepository implements OrderItemStatusRepository
 {
     /**
      * Verify if skip Presenter
@@ -32,7 +32,7 @@ class OrderDetailStatusRepositoryEloquent extends BaseRepository implements Orde
      */
     public function model()
     {
-        return OrderDetailStatus::class;
+        return OrderItemStatus::class;
     }
 
     /**
@@ -59,6 +59,6 @@ class OrderDetailStatusRepositoryEloquent extends BaseRepository implements Orde
      * @return void
      */
     public function presenter(){
-        return OrderDetailStatusPresenter::class;
+        return OrderItemStatusPresenter::class;
     }
 }
