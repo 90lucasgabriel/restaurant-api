@@ -31,9 +31,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 			
 			// COMPANY/BRANCH/ORDER
 			Route::group(['prefix' => 'order/{order_id}/', 'as' => 'company.branch.order'], function(){
-			 	Route::resource('item', 						'Api\OrderItemController', 			 	['except'=>['create', 'edit', 'delete']]);
 			});
-			Route::get(		'order-item', 					['as'=>'order-item.byBranch',			'uses'=>'Api\OrderItemController@queryByBranch']);
+			Route::resource('order-item', 					'Api\OrderItemController', 			 		['except'=>['create', 'edit', 'delete']]);
+			Route::get(			'order-item', 					['as'=>'order-item.byBranch',				'uses'=>'Api\OrderItemController@queryByBranch']);
 			
 			Route::resource('diningtable',  				'Api\DiningtableController', 				['except'=>['create', 'edit', 'delete']]);
 			Route::resource('order', 			  				'Api\OrderController', 			 				['except'=>['create', 'edit', 'delete']]);

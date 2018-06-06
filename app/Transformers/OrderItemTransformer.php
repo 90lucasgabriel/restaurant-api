@@ -21,7 +21,7 @@ class OrderItemTransformer extends TransformerAbstract
      * Available models includes
      * @var array
      */
-    protected $availableIncludes = ['diningtable','product', 'orderItemType', 'orderItemStatus', 'menu'];
+    protected $availableIncludes = ['order', 'diningtable', 'product', 'orderItemType', 'orderItemStatus', 'menu'];
 
     /**
      * Transform the \OrderItem entity
